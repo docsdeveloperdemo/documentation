@@ -1,0 +1,67 @@
+# Homepage Widgets - Upcoming Releases
+
+## Overview
+The upcoming releases widget is a new feature that enhances the Strapi admin panel homepage by displaying scheduled releases directly on the dashboard. This feature provides better visibility and improved user experience for content teams managing release schedules.
+
+## Feature Details
+
+### What it does
+- Displays a list of upcoming releases on the homepage
+- Shows releases that have been scheduled for the future
+- Updates automatically when releases are created, edited, or deleted
+- Provides quick access to release management
+
+### Requirements
+- **Premium/Enterprise Edition**: This feature requires the content-releases package
+- **Strapi Version**: Compatible with Strapi 5.x
+- **Permissions**: Users must have appropriate permissions to view releases
+
+## Implementation Details
+
+### Source Information
+- **Pull Request**: #23998 - "feat: homepage upcoming releases widget"
+- **Author**: Adzouz
+- **Status**: Under development
+- **Repository**: strapi/strapi
+- **Branch**: feat/homepage-widget-releases
+
+### Technical Components
+The widget implementation includes:
+- React-based widget component for the homepage
+- Integration with the content-releases package
+- Real-time updates when release data changes
+- Responsive design for various screen sizes
+
+## Usage
+
+### How to Access
+1. Ensure you have a Premium or Enterprise edition license
+2. Install and configure the content-releases package
+3. Create releases scheduled for future dates
+4. Navigate to the admin panel homepage
+5. The upcoming releases widget will automatically appear
+
+### Managing Releases
+- Create new releases using the content-releases interface
+- Schedule releases for future publication dates
+- Edit existing releases to update their scheduling
+- Delete releases that are no longer needed
+- All changes will be reflected in the homepage widget
+
+## Benefits
+- **Improved Visibility**: See all upcoming releases at a glance
+- **Better Planning**: Enhanced overview of content publication schedule
+- **Streamlined Workflow**: Quick access to release management from the homepage
+- **User Experience**: More intuitive and informative dashboard
+
+## Testing
+The feature includes comprehensive end-to-end tests to ensure reliability:
+- Widget display functionality
+- Data synchronization with releases
+- User interaction testing
+- Responsive behavior validation
+
+---
+
+*Documentation updated: 2025-07-22T13:00:45.663Z*
+*Based on Strapi PR #23998: Homepage upcoming releases widget*
