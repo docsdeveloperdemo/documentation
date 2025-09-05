@@ -16,6 +16,8 @@ tags:
 
 <div className="document-concept-page custom-mermaid-layout">
 
+# Documents
+
 A **document** in Strapi 5 is an API-only concept. A document represents all the different variations of content for a given entry of a content-type.
 
 A single type contains a unique document, and a collection type can contain several documents.
@@ -33,7 +35,7 @@ Manipulating documents with the [Document Service API](/cms/api/document-service
 
 The following diagrams represent all the possible variations of content depending on which features, such as [Internationalization (i18n)](/cms/features/internationalization) and [Draft & Publish](/cms/features/draft-and-publish), are enabled for a content-type:
 
-<Tabs>
+<Tabs className="tabs--allow-multiline">
 <TabItem value="document-only" label="Neither i18n nor Draft & Publish enabled">
 
 <MermaidWithFallback

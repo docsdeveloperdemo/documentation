@@ -40,7 +40,9 @@ The <Icon name="faders" /> *General* tab for the project-level settings enables 
 - *Strapi CMS license key*: to enable and use some CMS features directly on your Cloud project (see [Pricing page](https://strapi.io/pricing-self-hosted) to purchase a license).
 
 - *Connected Git repository*: to change the repository and branch used for your project (see [Modifying git repository & branch](#modifying-git-repository--branch)). Also allows to enable/disable the "deploy on push" option.
-- *Delete project*: to permanently delete your Strapi Cloud project (see [Deleting Strapi Cloud project](#deleting-strapi-cloud-project)).
+- *Danger zone*, with:
+  - *Transfer ownership*: for the project owner to transfer the ownership of the Cloud project to an already existing maintainer (see [Transferring project ownership](#transferring-project-ownership)).
+  - *Delete project*: to permanently delete your Strapi Cloud project (see [Deleting Strapi Cloud project](#deleting-strapi-cloud-project)).
 
 <ThemedImage
   alt="Project settings page"
@@ -100,11 +102,40 @@ Updating the git repository could result in the loss of the project and its data
 5. Click on the **Update repository** button at the bottom of the *Update repository* interface.
 6. In the *Update repository* dialog, confirm your changes by clicking on the **Confirm** button.
 
+#### Transferring project ownership <BetaBadge /> {#transferring-project-ownership}
+
+The ownership of the Strapi Cloud project can be transferred to another user, as long as they're a maintainer of the project. It can either be at the initiative of the current project owner, or can be requested by a project maintainer. Once the ownership is transferred, it is permanent until the new owner decides to transfer the ownership again to another maintainer.
+
+:::prerequisites
+For the ownership of a project to be transferred, the following requirements must be met:
+- The project must be on a paid plan, with no currently expired card and/or unpaid bills.
+- The maintainer must have filled their billing information.
+- No already existing ownership transfer must be pending for the project.
+
+Note that ownership transfers might fail when done the same day of subscription renewal (i.e. 1st of every month). If the transfer fails that day, but all prerequisites are met, you should wait a few hours and try again.
+:::
+
+1. In the *Danger zone* section of the <Icon name="faders" /> *General* tab, click on the **Transfer ownership** button.
+2. In the dialog:
+   - If you are the project owner: choose the maintainer who should be transferred the ownership by clicking on **...** > **Transfer ownership** associated with their name.
+   - If you are a maintainer: find yourself in the list and click on **...** > **Transfer ownership** associated with your name.
+3. Confirm the transfer/request in the new dialog by clicking on the **Transfer ownership** button.
+
+An email will be sent to both users. The person who needs to transfer the ownership or inherit it will have to click on the **Confirm transfer** button in the email. Once done, the previous owner will receive a confirmation email that the transfer has successfully been done.
+
+:::tip
+As long as the ownership transfer or request hasn't been confirmed, there is the option to cancel in the same dialog that the maintainer was chosen.
+:::
+
+:::note
+Once the ownership transfer is done, the project will be disconnected from Strapi Cloud. As new owner, make sure to go to the <Icon name="faders" /> *General* tab of project settings to reconnect the project.
+:::
+
 #### Deleting Strapi Cloud project
 
 You can delete any Strapi Cloud project, but it will be permanent and irreversible. Associated domains, deployments and data will be deleted as well and the subscription for the project will automatically be canceled.
 
-1. In the *Delete project* section of the <Icon name="faders" /> *General* tab, click on the **Delete project** button.
+1. In the *Danger zone* section of the <Icon name="faders" /> *General* tab, click on the **Delete project** button.
 2. In the dialog, select the reason why you are deleting your project. If selecting "Other" or "Missing feature", a textbox will appear to let you write additional information.
 3. Confirm the deletion of your project by clicking on the **Delete project** button at the bottom of the dialog.
 
@@ -143,12 +174,12 @@ To create a new environment:
     | Git branch       | (mandatory) Select the right branch for your new environment.            |
     | Base directory   | Write the name of the base directory of your new environment.            |
     | Import variables | Tick the box to import variable names from an existing environment. Values will not be imported, and all variables will remain blank. |
-    | Auto-deploy      | Tick the box to automatically trigger a new deployment whenever a new commit is pushed to the selected branch. Untick it to disable the option. |
+    | Deploy on push      | Tick this box to automatically trigger a deployment when changes are pushed to your selected branch. When disabled, you will need to manually deploy the latest changes. |
 
-4. Click on the **Add environment** button to create your project's new environment. A new deployment will automatically be triggered.
+4. Click on the **Add environment** button to create your project's new environment. You will then be redirected to your *Project dashboard* where you will be able to follow your new environment's creation and first deployment.
 
-:::caution
-If the creation of a new environment fails but you are still charged, try creating the environment again. This time, the environment creation should be successful and you will not be charged a second time. This behaviour is an known issue that should be fixed in the upcoming weeks.
+:::note
+If an error occurs during the environment creation, the progress indicator will stop and display an error message. You will see a **Retry** button next to the failed step, allowing you to restart the creation process.
 :::
 
 ### Billing & Usage
@@ -339,13 +370,14 @@ The <Icon name="arrow-clockwise" /> *Backups* tab informs you of the status and 
 
 :::note Notes
 
-- The backup feature is not available for Strapi Cloud projects using the Free or Essential plans. You will need to upgrade to either the Pro or Scale plan to have your project automatically backed up and to have access to manual backups.
+- The backup feature is not available for Strapi Cloud projects on the Free or Essential plans. You will need to upgrade to the Pro or Scale plan to enable automatic backups and access the manual backup option.
 
-<!-- - Only project owners can restore a backup. Maintainers have access to the <Icon name="arrow-clockwise" /> *Backups* tab but the **Restore backup** button won't be displayed for them. Refer to [Collaboration](/cloud/projects/collaboration) for more information. -->
+- Backups include only the database of your default Production environment. Assets uploaded to your project and databases from any secondary environments are not included.
 
-- The manual backup option should become available shortly after project's first succesful deployment.
+- The manual backup option becomes available shortly after the project’s first successful deployment.
 
-- The backup feature is only available for the default, production environment. Other additional environment's settings will not show the <Icon name="arrow-clockwise" /> *Backups* tab.
+
+
 :::
 
 :::tip
@@ -364,7 +396,7 @@ For projects created before the release of the Backup feature in October 2023, t
 
 To create a manual backup, in the <Icon name="arrow-clockwise" /> *Backups* section, click on the **Create backup** button.
 
-The manual backup should start immediately, and restoration or creation of other backups will be disabled until backup is complete.
+The manual backup should start immediately, and restoration or creation of other backups will be disabled until the backup is complete.
 
 :::caution
 When creating a new manual backup, any existing manual backup will be deleted. You can only have one manual backup at a time.
@@ -378,6 +410,18 @@ If you need to restore a backup of your project:
 2. In the dialog, choose one of the available backups (automatic or manual) of your project in the *Choose backup* drop-down.
 3. Click on the **Restore** button of the dialog. Once the restoration is finished, your project will be back to the state it was at the time of the chosen backup. You will be able to see the restoration timestamp and the backup restored in the <Icon name="arrow-clockwise"/> *Backups* tab.
 4. The timestamp of the last completed restoration will be displayed to help you track when the project was last restored.
+
+#### Downloading a backup
+
+If you need to download a backup of your project:
+
+1. In the <Icon name="arrow-clockwise" /> *Backups* section, click on the **Download backup** button.
+2. In the dialog, choose one of the available backups (automatic or manual) of your project in the *Choose backup* drop-down.
+3. Click on the **Download** button of the dialog to download the chosen backup's archive file in `.sql` format.
+
+:::note
+The backup file will include only the database of your default Production environment. It will not include assets or any other environment databases.
+:::
 
 ### Domains
 

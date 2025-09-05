@@ -9,7 +9,6 @@ tags:
 - guides
 ---
 
-import DoNotMigrateYet from '/docs/snippets/_do-not-migrate-to-v5-yet.md'
 
 # Step-by-step guide to upgrade to Strapi 5
 
@@ -111,7 +110,7 @@ Follow the steps below and leverage retro-compatibility flags and guided migrati
 
 ### Migrate GraphQL API calls
 
-1. Enable the retro-compatibility flag by setting `v4ComptabilityMode` to `true` in the `graphql.config` object of [the `/config/plugins.js|ts` file](/cms/plugins/graphql#code-based-configuration).
+1. Enable the retro-compatibility flag by setting `v4CompatibilityMode` to `true` in the `graphql.config` object of [the `/config/plugins.js|ts` file](/cms/plugins/graphql#code-based-configuration).
 2. Update your queries and mutations only, guided by the dedicated [breaking change entry for GraphQL](/cms/migration/v4-to-v5/breaking-changes/graphql-api-updated).
 3. Validate that your client is running correctly.
-4. Disable the retro-compatibily flag by setting `v4ComptabilityMode` to `false` and start using the new response format.
+4. Disable the retro-compatibily flag by setting `v4CompatibilityMode` to `false` and start using the new response format.

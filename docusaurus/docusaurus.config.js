@@ -90,6 +90,7 @@ const config = {
         'Disclaimer: Answers are AI-generated and might be inaccurate. Please ensure you double-check the information provided by visiting source pages.',
       'data-project-color': '#4945FF',
       'data-button-bg-color': '#32324D',
+      'data-modal-example-questions': "How to create a Strapi project?,How does population work?,How to customize the admin panel?,Explain the Growth plan benefits",
       // 'data-modal-override-open-class-search': 'DocSearch-Button',
       // 'data-modal-title-search': 'Search Strapi Docs',
       // 'data-modal-open-on-command-k': 'true',
@@ -99,9 +100,13 @@ const config = {
       'data-modal-border-radius': '4px',
       'data-submit-query-button-bg-color': '#4945FF',
       'data-modal-body-padding-top': '20px',
-      'data-modal-y-offset': '25vh',
-      'data-modal-size': '720px',
       'data-user-analytics-cookie-enabled': true,
+      'data-modal-size': '900px',              // Default is 640px
+      'data-modal-full-screen': 'false',
+      'data-modal-full-screen-on-mobile': 'true',
+      'data-modal-x-offset': '0',              // Defaults is undefined
+      'data-modal-y-offset': '3vh',            // Default is 10vh
+      'data-modal-inner-max-width': '100%',
       async: true,
     },
     {
@@ -259,14 +264,6 @@ const config = {
           {
             title: 'Additional resources',
             items: [
-              {
-                label: 'LLMs.txt',
-                href: 'https://docs.strapi.io/llms.txt',
-              },
-              {
-                label: 'LLMs-full.txt',
-                href: 'https://docs.strapi.io/llms-full.txt',
-              },
               {
                 label: 'v4 Docs',
                 href: 'https://docs-v4.strapi.io',

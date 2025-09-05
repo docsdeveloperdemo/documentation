@@ -65,7 +65,7 @@ The `connection.connection` object found in `./config/database.js` (or `./config
 | `connectionString`| Database connection string. When set, it overrides the other `connection.connection` properties. To disable use an empty string: `''`. <br/> **Available in `v4.6.2`+**           | `String`                  |
 | `host`     | Database host name. Default value: `localhost`.                                                                               | `String`              |
 | `port`     | Database port                                                                                                                 | `Integer`             |
-| `database` | Database name.                                                                                                                | `String`              |
+| `database` or `filename` | Database name or filename.   <ul><li>For MySQL or PostgreSQL, use the `database` key (with `host`, `port`, etc.).</li><li>For SQLite, only provide `filename`` which points to the database file.</li></ul> | `String`              |
 | `user`     | Username used to establish the connection                                                                                     | `String`              |
 | `password` | Password used to establish the connection                                                                                     | `String`              |
 | `timezone` | Set the default behavior for local time. Default value: `utc` <ExternalLink to="https://www.php.net/manual/en/timezones.php" text="Timezone options"/> | `String`              |
@@ -105,8 +105,6 @@ The `settings` object found in `./config/database.js` (or `./config/database.ts`
 | `forceMigration` | Enable or disable the forced database migration.                | `Boolean` | `true`  |
 | `runMigrations`  | Enable or disable database migrations from running on start up. | `Boolean` | `true`  |
 
-<!-- TODO: Open and track a feature request for autoMigration as it doesn't exist in v4 -->
-
 ### Configuration examples
 
 <Tabs>
@@ -118,16 +116,18 @@ module.exports = ({ env }) => ({
   connection: {
     client: 'postgres',
     connection: {
+      connectionString: env('DATABASE_URL'),
       host: env('DATABASE_HOST', '127.0.0.1'),
       port: env.int('DATABASE_PORT', 5432),
       database: env('DATABASE_NAME', 'strapi'),
       user: env('DATABASE_USERNAME', 'strapi'),
       password: env('DATABASE_PASSWORD', 'strapi'),
       schema: env('DATABASE_SCHEMA', 'public'), // Not required
-      ssl: {
+      ssl: env.bool('DATABASE_SSL', false) && {
         rejectUnauthorized: env.bool('DATABASE_SSL_SELF', false), // For self-signed certificates
       },
     },
+    pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     debug: false,
   },
 });
@@ -211,6 +211,10 @@ module.exports = ({ env }) => ({
   },
 });
 ```
+
+:::tip
+Strapi’s default SQLite database lives at `.tmp/data.db` at the root of the project. If you want to customise the path to store the database elsewhere, set the `DATABASE_FILENAME` environment variable.
+:::
 
 </TabItem>
 
