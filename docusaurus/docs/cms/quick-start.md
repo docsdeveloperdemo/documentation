@@ -456,3 +456,13 @@ Now that you know the basics of creating and publishing content with Strapi, we 
 <Icon name="arrow-fat-right"/> learn more about Strapi features by browsing the <Icon name="backpack" /> **Features** category,<br/>
 <Icon name="arrow-fat-right"/> learn more about Strapi Cloud projects by reading the [Cloud Documentation](/cloud/intro),<br/>
 <Icon name="arrow-fat-right"/> and [customize your Strapi back end](/cms/backend-customization) and [admin panel](/cms/admin-panel-customization) for advanced use cases.<br/>
+
+## Preview Your Content
+
+Strapi v5 includes a new Preview Device Selector that allows you to see how your content looks on different devices:
+
+1. Open any content entry in the Content Manager
+2. Use the device selector to switch between mobile, tablet, and desktop views
+3. Make adjustments to ensure your content looks great on all screen sizes
+
+This feature helps you create responsive content that works well across all devices.

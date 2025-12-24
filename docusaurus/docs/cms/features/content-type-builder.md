@@ -804,3 +804,13 @@ Deleting a content-type only deletes what was created and available from the Con
     dark: '/img/assets/content-type-builder/new_CTB_deletion_DARK.png',
   }}
 />
+
+### Preview Configuration
+
+When creating content types, consider how they will appear across different devices. The new Preview Device Selector allows content creators to:
+
+- Test responsive layouts in real-time
+- Ensure optimal display on mobile, tablet, and desktop
+- Make informed decisions about field layouts and content structure
+
+To enable preview for your content type, ensure the preview settings are configured in the Content Manager.

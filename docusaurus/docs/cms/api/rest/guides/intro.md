@@ -42,3 +42,14 @@ Additional tutorials and guides can be found in the following blog posts:
 <CustomDocCard emoji="➕" title="Requesting Strapi's REST API behind a Content Delivery Network (CDN)" description="Learn how to overcome network latency issues when requesting large numbers of media assets by leveraging the usage of a CDN with Strapi's REST API." link="https://strapi.io/blog/request-strapi-s-rest-api-behind-a-content-delivery-network-cdn" />
 
 
+
+## Device-Specific Content
+
+With the new Preview Device Selector feature, you can optimize content delivery for different devices. Consider implementing responsive content strategies using the REST API:
+
+```javascript
+// Example: Fetch content optimized for mobile devices
+const mobileContent = await fetch('/api/articles?populate=*&device=mobile');
+```
+
+This allows you to serve device-appropriate content and improve user experience across all screen sizes.
